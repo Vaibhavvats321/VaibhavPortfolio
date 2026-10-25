@@ -174,7 +174,25 @@ Rules:
 
 ### Configuration
 
-`next.config.ts` keeps the scaffolded Turbopack/Tailwind integration, Cache Components, partial prefetching, and disables the `X-Powered-By` header.
+`next.config.ts` keeps the scaffolded Turbopack/Tailwind integration and disables the
+`X-Powered-By` header. Development retains Cache Components and partial prefetching.
+Production static export disables both because Next.js 16.4.2 enables PPR through Cache
+Components and explicitly rejects PPR in export mode. Export fully prerenders this
+single, static route, so disabling PPR for the exported production build does not remove
+dynamic functionality. Production builds use the `/VaibhavPortfolio` base path for
+GitHub Pages; development keeps the root path so `pnpm dev` remains at
+`http://localhost:3000`.
+
+The current App Router contains only a statically rendered home page. It has no route
+handlers, dynamic routes, request-dependent APIs, server actions, or other runtime
+server requirements. Motion, theme handling, and the existing Three.js scenes run on the
+client. The resume is a public static asset and is linked with the production base path.
+Static export therefore preserves the current site; future server-dependent features
+cannot be deployed to GitHub Pages without a separate service or hosting target.
+
+The GitHub Actions workflow installs from the pnpm lockfile, runs lint/type-check/unit
+tests, builds `out/`, and deploys it with the GitHub Pages Actions. The `pnpm start`
+script previews that export locally; it is not a Next.js Node server.
 
 `tsconfig.json` keeps `strict: true`, the `@/*` alias, and the Next.js TypeScript plugin. Type checks run separately from builds because Next.js 16 no longer runs ESLint during `next build`. The `typecheck` script runs `next typegen` first so generated `LayoutProps` route types exist on a clean checkout.
 
@@ -413,7 +431,8 @@ Targets are goals to measure in Phase 7, not claims made in Phase 0.
 | 3D scene | Deferred | Evaluate only after narrative and projects are real; must justify cost and fallback |
 | GSAP | Not installed | Motion must be insufficient for a specific timeline before adding GSAP |
 | ESLint 10 | Deferred | Next.js 16.4.2 plugins currently declare peer support through ESLint 9 |
-| Deployment target and canonical URL | Pending | Needed for metadata, sitemap, and social previews before launch |
+| Deployment target | Configured, deployment pending | GitHub Pages: `https://vaibhavvats321.github.io/VaibhavPortfolio/`; the first deployment requires Pages to use GitHub Actions |
+| Canonical URL | Pending | Add canonical metadata when SEO metadata is approved |
 | Placeholder foundation page | Temporary | Remove in Phase 1 when real narrative content lands |
 
 ---
@@ -442,3 +461,4 @@ Targets are goals to measure in Phase 7, not claims made in Phase 0.
 - **2026-10-24 — Phase 3:** Completed a browser-based visual audit and polished the Editorial Nocturne UI: larger cinematic hero composition, original SVG signal artwork, responsive section rhythm, project-card previews and hover/focus states, experience timeline nodes, contact cards, active navigation, reduced-motion and no-JS support, and accessible footer targets. Refined `Reveal` to use viewport-triggered Motion, added `HeroDepth` parallax, and expanded Playwright checks for reveals, navigation state, footer targets, mobile menu, reduced motion, and no-JS reading. No dependencies added.
 - **2026-10-24 — Visual direction correction:** Replaced the generic cinematic hero background with an original procedural Three.js neural-network/systems scene communicating software engineering and AI engineering. Updated `PROJECT_SPEC.md` to document the approved concept "Intelligence, Systems, and Software in Motion." No new dependencies added.
 - **2026-10-24 — Major visual redesign:** Reworked the hero into a focused computational core with orbital rings, satellite nodes, signal nodes, connecting pathways, and data packets; improved project preview diagrams, contrast, and responsive composition. Captured before/after screenshots at desktop, tablet, mobile, and narrow widths. `pnpm verify` passed (lint, typecheck, 2 unit tests, build, 27/30 Playwright with 3 skipped).
+- **2026-10-25 — GitHub Pages deployment:** Enabled static export with a production-only repository base path, added a GitHub Actions Pages workflow and static-export preview server, and tested the resume URL beneath the repository path. Cache Components, partial prefetching, the existing UI, and browser-side animations remain enabled.

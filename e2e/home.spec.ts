@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("renders the portfolio landing page", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("./");
 
   await expect(page).toHaveTitle(/Vaibhav/);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(/Vaibhav Vats/);
@@ -14,6 +14,17 @@ test("renders the portfolio landing page", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 2, name: "Get in touch" })).toBeAttached();
 });
 
+test("serves the resume beneath the GitHub Pages repository path", async ({ page }) => {
+  await page.goto("./");
+
+  const resumeLink = page.getByRole("link", { name: /Download Resume/i });
+  await expect(resumeLink).toHaveAttribute("href", "/VaibhavPortfolio/resume.pdf");
+
+  const response = await page.request.get("/VaibhavPortfolio/resume.pdf");
+  expect(response.ok()).toBeTruthy();
+  expect(response.headers()["content-type"]).toContain("application/pdf");
+});
+
 test("loads without browser errors", async ({ page }) => {
   const errors: string[] = [];
 
@@ -24,14 +35,14 @@ test("loads without browser errors", async ({ page }) => {
   });
   page.on("pageerror", (error) => errors.push(error.message));
 
-  await page.goto("/");
+  await page.goto("./");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 
   expect(errors).toEqual([]);
 });
 
 test("skip link moves focus to the main landmark", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("./");
 
   await page.keyboard.press("Tab");
 
@@ -45,7 +56,7 @@ test("skip link moves focus to the main landmark", async ({ page }) => {
 });
 
 test("reveals below-the-fold sections on scroll", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("./");
 
   const projectReveal = page.locator("#work [data-reveal]").first();
   await expect(projectReveal).toHaveCSS("opacity", "0");
@@ -59,7 +70,7 @@ test("reveals below-the-fold sections on scroll", async ({ page }) => {
 test("marks the current section in the desktop navigation", async ({ page }) => {
   test.skip((page.viewportSize()?.width ?? 0) < 1024);
 
-  await page.goto("/");
+  await page.goto("./");
   const primaryNav = page.locator('header nav[aria-label="Primary"]');
   const workLink = primaryNav.locator('a[href="#work"]');
 
@@ -71,7 +82,7 @@ test("marks the current section in the desktop navigation", async ({ page }) => 
 });
 
 test("keeps footer link targets at least 24px tall", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("./");
 
   for (const link of await page.locator("footer nav a").all()) {
     const box = await link.boundingBox();
@@ -81,7 +92,7 @@ test("keeps footer link targets at least 24px tall", async ({ page }) => {
 
 test("opens and closes the mobile menu with Escape", async ({ page }) => {
   test.skip((page.viewportSize()?.width ?? 0) >= 768);
-  await page.goto("/");
+  await page.goto("./");
 
   const trigger = page.getByRole("button", { name: /navigation menu/i });
   await trigger.click();
@@ -100,7 +111,7 @@ test("opens and closes the mobile menu with Escape", async ({ page }) => {
 test("does not overflow horizontally across widths", async ({ page }) => {
   for (const width of [320, 390, 768, 1024, 1440]) {
     await page.setViewportSize({ width, height: 900 });
-    await page.goto("/");
+    await page.goto("./");
 
     const overflow = await page.evaluate(() => {
       const root = document.documentElement;
@@ -115,7 +126,7 @@ test.describe("reduced motion", () => {
   test.use({ reducedMotion: "reduce" });
 
   test("keeps all content visible", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("./");
 
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await expect(
@@ -133,7 +144,7 @@ test.describe("without JavaScript", () => {
   test.use({ javaScriptEnabled: false });
 
   test("keeps the narrative content readable", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("./");
 
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await expect(

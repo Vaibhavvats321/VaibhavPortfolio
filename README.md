@@ -13,7 +13,7 @@ A cinematic, editorial personal developer portfolio. The project is being built 
 - Playwright for browser-level verification
 - pnpm as the package manager
 
-Three.js and GSAP are not installed. They are deferred until a scene or timeline justifies them.
+Three.js powers the existing interactive hero and skills scenes. GSAP remains deferred.
 
 ## Requirements
 
@@ -30,13 +30,27 @@ pnpm dev
 
 Open http://localhost:3000.
 
+## GitHub Pages deployment
+
+The `main` branch deploys automatically to
+<https://vaibhavvats321.github.io/VaibhavPortfolio/> through GitHub Actions. The workflow
+can also be started manually from the Actions tab. In the repository settings, set
+**Pages → Build and deployment → Source** to **GitHub Actions**.
+
+The production build uses Next.js static export and the `/VaibhavPortfolio` base path.
+After `pnpm build`, run `pnpm start` to preview the exported site locally at
+<http://127.0.0.1:3000/VaibhavPortfolio/>.
+
+GitHub Pages only hosts static files. This portfolio currently has no server-dependent
+routes or features; its interactive scenes and theme behavior run in the browser.
+
 ## Scripts
 
 | Command | Purpose |
 | --- | --- |
 | `pnpm dev` | Start the development server with Turbopack |
 | `pnpm build` | Create a production build |
-| `pnpm start` | Serve the production build |
+| `pnpm start` | Preview the exported site at `/VaibhavPortfolio/` |
 | `pnpm lint` | Run ESLint |
 | `pnpm lint:fix` | Apply ESLint fixes |
 | `pnpm typecheck` | Generate route types and run `tsc --noEmit` |

@@ -14,7 +14,7 @@ test.describe("hero scene verification", () => {
       page.on("pageerror", (e) => errors.push(e.message));
 
       await page.setViewportSize({ width, height });
-      await page.goto("/");
+      await page.goto("./");
       await page.waitForTimeout(4000);
 
       const h1 = await page.getByRole("heading", { level: 1 }).textContent();
@@ -39,7 +39,7 @@ test.describe("hero scene verification", () => {
     });
     page.on("pageerror", (error) => errors.push(error.message));
 
-    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await page.goto("./", { waitUntil: "domcontentloaded" });
     const scene = page.getByRole("img", { name: /^Engineer workflow:/ });
     const stages = ["FRONTEND", "API", "BUILD", "GIT PUSH", "DEPLOY", "HOORAY"];
 

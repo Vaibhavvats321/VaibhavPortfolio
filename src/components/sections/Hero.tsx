@@ -1,3 +1,4 @@
+import { basePath } from "@/config/deployment";
 import { HeroSceneLoader } from "@/components/motion/HeroSceneLoader";
 import { Reveal } from "@/components/motion/Reveal";
 import { portfolio } from "@/content/portfolio";
@@ -43,7 +44,7 @@ export function Hero() {
             <Reveal delay={0.24} className="mt-9">
               <div className="flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                 <a
-                  href="/resume.pdf"
+                  href={`${basePath}/resume.pdf`}
                   download
                   className="inline-flex min-h-12 items-center gap-3 rounded-full bg-[rgb(var(--primary))] px-7 py-3 font-medium text-[rgb(var(--bg))] transition-transform hover:scale-[1.02] focus-visible:scale-[1.02]"
                 >
