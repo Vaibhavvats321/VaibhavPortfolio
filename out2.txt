@@ -1,0 +1,264 @@
+
+> vaibhav-portfolio@0.1.0 test:e2e C:\Projects\VaibhavPortfolio
+> playwright test "--" "--project=desktop-chromium"
+
+
+Running 30 tests using 6 workers
+
+  ok  2 [desktop-chromium] › e2e\home.spec.ts:17:5 › loads without browser errors (10.9s)
+  ok  1 [desktop-chromium] › e2e\home.spec.ts:3:5 › renders the portfolio landing page (15.6s)
+  -   7 [desktop-chromium] › e2e\home.spec.ts:82:5 › opens and closes the mobile menu with Escape
+  ok  3 [desktop-chromium] › e2e\home.spec.ts:47:5 › reveals below-the-fold sections on scroll (18.3s)
+  ok 10 [desktop-chromium] › e2e\home.spec.ts:135:7 › without JavaScript › keeps the narrative content readable (2.0s)
+  ok  9 [desktop-chromium] › e2e\home.spec.ts:117:7 › reduced motion › keeps all content visible (5.1s)
+  ok  4 [desktop-chromium] › e2e\home.spec.ts:73:5 › keeps footer link targets at least 24px tall (22.9s)
+  ok  8 [desktop-chromium] › e2e\home.spec.ts:100:5 › does not overflow horizontally across widths (6.9s)
+  x   6 [desktop-chromium] › e2e\home.spec.ts:59:5 › marks the current section in the desktop navigation (14.5s)
+  x   5 [desktop-chromium] › e2e\home.spec.ts:33:5 › skip link moves focus to the main landmark (17.8s)
+  -  14 [tablet-chromium] › e2e\home.spec.ts:59:5 › marks the current section in the desktop navigation
+  ok 12 [tablet-chromium] › e2e\home.spec.ts:17:5 › loads without browser errors (9.9s)
+  ok 15 [tablet-chromium] › e2e\home.spec.ts:3:5 › renders the portfolio landing page (11.2s)
+  ok 16 [tablet-chromium] › e2e\home.spec.ts:47:5 › reveals below-the-fold sections on scroll (12.3s)
+  x  13 [tablet-chromium] › e2e\home.spec.ts:33:5 › skip link moves focus to the main landmark (12.5s)
+  ok 20 [tablet-chromium] › e2e\home.spec.ts:135:7 › without JavaScript › keeps the narrative content readable (2.1s)
+  x  11 [tablet-chromium] › e2e\home.spec.ts:73:5 › keeps footer link targets at least 24px tall (9.7s)
+  ok 19 [tablet-chromium] › e2e\home.spec.ts:117:7 › reduced motion › keeps all content visible (5.0s)
+  ok 18 [tablet-chromium] › e2e\home.spec.ts:100:5 › does not overflow horizontally across widths (7.2s)
+  -  24 [mobile-chromium] › e2e\home.spec.ts:59:5 › marks the current section in the desktop navigation
+  ok 21 [mobile-chromium] › e2e\home.spec.ts:3:5 › renders the portfolio landing page (6.5s)
+  ok 23 [mobile-chromium] › e2e\home.spec.ts:17:5 › loads without browser errors (9.4s)
+  x  22 [mobile-chromium] › e2e\home.spec.ts:33:5 › skip link moves focus to the main landmark (10.7s)
+  ok 27 [mobile-chromium] › e2e\home.spec.ts:82:5 › opens and closes the mobile menu with Escape (12.7s)
+  x  17 [tablet-chromium] › e2e\home.spec.ts:82:5 › opens and closes the mobile menu with Escape (32.3s)
+  x  26 [mobile-chromium] › e2e\home.spec.ts:73:5 › keeps footer link targets at least 24px tall (10.1s)
+  x  25 [mobile-chromium] › e2e\home.spec.ts:47:5 › reveals below-the-fold sections on scroll (14.3s)
+  ok 29 [mobile-chromium] › e2e\home.spec.ts:135:7 › without JavaScript › keeps the narrative content readable (2.6s)
+  ok 28 [mobile-chromium] › e2e\home.spec.ts:100:5 › does not overflow horizontally across widths (10.2s)
+  ok 30 [mobile-chromium] › e2e\home.spec.ts:117:7 › reduced motion › keeps all content visible (2.8s)
+
+
+  1) [desktop-chromium] › e2e\home.spec.ts:33:5 › skip link moves focus to the main landmark ───────
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  getByRole('link', { name: 'Skip to content' })
+    Expected: focused
+    Received: inactive
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeFocused" getByRole('link', { name: 'Skip to content' }) with timeout 5000ms
+      - waiting for getByRole('link', { name: 'Skip to content' })
+
+
+      37 |
+      38 |   const skipLink = page.getByRole("link", { name: "Skip to content" });
+    > 39 |   await expect(skipLink).toBeFocused();
+         |                          ^
+      40 |
+      41 |   await page.keyboard.press("Enter");
+      42 |
+        at C:\Projects\VaibhavPortfolio\e2e\home.spec.ts:39:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\home-skip-link-moves-focus-to-the-main-landmark-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\home-skip-link-moves-focus-to-the-main-landmark-desktop-chromium\error-context.md
+
+  2) [desktop-chromium] › e2e\home.spec.ts:59:5 › marks the current section in the desktop navigation 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('header nav[aria-label="Primary"]').locator('a[href="#work"]')
+    Expected: "location"
+    Received: ""
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('header nav[aria-label="Primary"]').locator('a[href="#work"]') with timeout 5000ms
+      - waiting for locator('header nav[aria-label="Primary"]').locator('a[href="#work"]')
+        5 × locator resolved to <a href="#work" class="text-sm transition-colors hover:text-[rgb(var(--primary))] focus-visible:text-[rgb(var(--primary))] text-[rgb(var(--muted))]">Projects</a>
+          - unexpected value "null"
+
+
+      68 |   });
+      69 |
+    > 70 |   await expect(workLink).toHaveAttribute("aria-current", "location");
+         |                          ^
+      71 | });
+      72 |
+      73 | test("keeps footer link targets at least 24px tall", async ({ page }) => {
+        at C:\Projects\VaibhavPortfolio\e2e\home.spec.ts:70:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\home-marks-the-current-section-in-the-desktop-navigation-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\home-marks-the-current-section-in-the-desktop-navigation-desktop-chromium\error-context.md
+
+  3) [tablet-chromium] › e2e\home.spec.ts:33:5 › skip link moves focus to the main landmark ────────
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  getByRole('link', { name: 'Skip to content' })
+    Expected: focused
+    Received: inactive
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeFocused" getByRole('link', { name: 'Skip to content' }) with timeout 5000ms
+      - waiting for getByRole('link', { name: 'Skip to content' })
+        5 × locator resolved to <a href="#main" class="fixed left-4 top-4 z-50 -translate-y-24 bg-[rgb(var(--primary))] px-4 py-2 font-mono text-xs uppercase tracking-[0.16em] text-[rgb(var(--bg))] transition-transform focus:translate-y-0">Skip to content</a>
+          - unexpected value "inactive"
+
+
+      37 |
+      38 |   const skipLink = page.getByRole("link", { name: "Skip to content" });
+    > 39 |   await expect(skipLink).toBeFocused();
+         |                          ^
+      40 |
+      41 |   await page.keyboard.press("Enter");
+      42 |
+        at C:\Projects\VaibhavPortfolio\e2e\home.spec.ts:39:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\home-skip-link-moves-focus-to-the-main-landmark-tablet-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\home-skip-link-moves-focus-to-the-main-landmark-tablet-chromium\error-context.md
+
+  4) [tablet-chromium] › e2e\home.spec.ts:73:5 › keeps footer link targets at least 24px tall ──────
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 24
+    Received:    0
+
+      76 |   for (const link of await page.locator("footer nav a").all()) {
+      77 |     const box = await link.boundingBox();
+    > 78 |     expect(box?.height ?? 0).toBeGreaterThanOrEqual(24);
+         |                              ^
+      79 |   }
+      80 | });
+      81 |
+        at C:\Projects\VaibhavPortfolio\e2e\home.spec.ts:78:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\home-keeps-footer-link-targets-at-least-24px-tall-tablet-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\home-keeps-footer-link-targets-at-least-24px-tall-tablet-chromium\error-context.md
+
+  5) [tablet-chromium] › e2e\home.spec.ts:82:5 › opens and closes the mobile menu with Escape ──────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: /navigation menu/i })
+
+
+      85 |
+      86 |   const trigger = page.getByRole("button", { name: /navigation menu/i });
+    > 87 |   await trigger.click();
+         |                 ^
+      88 |
+      89 |   await expect(trigger).toHaveAttribute("aria-expanded", "true");
+      90 |   await expect(
+        at C:\Projects\VaibhavPortfolio\e2e\home.spec.ts:87:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\home-opens-and-closes-the-mobile-menu-with-Escape-tablet-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\home-opens-and-closes-the-mobile-menu-with-Escape-tablet-chromium\error-context.md
+
+  6) [mobile-chromium] › e2e\home.spec.ts:33:5 › skip link moves focus to the main landmark ────────
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  getByRole('link', { name: 'Skip to content' })
+    Expected: focused
+    Received: inactive
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeFocused" getByRole('link', { name: 'Skip to content' }) with timeout 5000ms
+      - waiting for getByRole('link', { name: 'Skip to content' })
+        6 × locator resolved to <a href="#main" class="fixed left-4 top-4 z-50 -translate-y-24 bg-[rgb(var(--primary))] px-4 py-2 font-mono text-xs uppercase tracking-[0.16em] text-[rgb(var(--bg))] transition-transform focus:translate-y-0">Skip to content</a>
+          - unexpected value "inactive"
+
+
+      37 |
+      38 |   const skipLink = page.getByRole("link", { name: "Skip to content" });
+    > 39 |   await expect(skipLink).toBeFocused();
+         |                          ^
+      40 |
+      41 |   await page.keyboard.press("Enter");
+      42 |
+        at C:\Projects\VaibhavPortfolio\e2e\home.spec.ts:39:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\home-skip-link-moves-focus-to-the-main-landmark-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\home-skip-link-moves-focus-to-the-main-landmark-mobile-chromium\error-context.md
+
+  7) [mobile-chromium] › e2e\home.spec.ts:47:5 › reveals below-the-fold sections on scroll ─────────
+
+    Error: locator.scrollIntoViewIfNeeded: Element is not attached to the DOM
+    Call log:
+      - attempting scroll into view action
+        - waiting for element to be stable
+
+
+      53 |   await page
+      54 |     .getByRole("heading", { level: 2, name: "Selected projects" })
+    > 55 |     .scrollIntoViewIfNeeded();
+         |      ^
+      56 |   await expect(projectReveal).toHaveCSS("opacity", "1");
+      57 | });
+      58 |
+        at C:\Projects\VaibhavPortfolio\e2e\home.spec.ts:55:6
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\home-reveals-below-the-fold-sections-on-scroll-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\home-reveals-below-the-fold-sections-on-scroll-mobile-chromium\error-context.md
+
+  8) [mobile-chromium] › e2e\home.spec.ts:73:5 › keeps footer link targets at least 24px tall ──────
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 24
+    Received:    0
+
+      76 |   for (const link of await page.locator("footer nav a").all()) {
+      77 |     const box = await link.boundingBox();
+    > 78 |     expect(box?.height ?? 0).toBeGreaterThanOrEqual(24);
+         |                              ^
+      79 |   }
+      80 | });
+      81 |
+        at C:\Projects\VaibhavPortfolio\e2e\home.spec.ts:78:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\home-keeps-footer-link-targets-at-least-24px-tall-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\home-keeps-footer-link-targets-at-least-24px-tall-mobile-chromium\error-context.md
+
+  8 failed
+    [desktop-chromium] › e2e\home.spec.ts:33:5 › skip link moves focus to the main landmark ────────
+    [desktop-chromium] › e2e\home.spec.ts:59:5 › marks the current section in the desktop navigation 
+    [tablet-chromium] › e2e\home.spec.ts:33:5 › skip link moves focus to the main landmark ─────────
+    [tablet-chromium] › e2e\home.spec.ts:73:5 › keeps footer link targets at least 24px tall ───────
+    [tablet-chromium] › e2e\home.spec.ts:82:5 › opens and closes the mobile menu with Escape ───────
+    [mobile-chromium] › e2e\home.spec.ts:33:5 › skip link moves focus to the main landmark ─────────
+    [mobile-chromium] › e2e\home.spec.ts:47:5 › reveals below-the-fold sections on scroll ──────────
+    [mobile-chromium] › e2e\home.spec.ts:73:5 › keeps footer link targets at least 24px tall ───────
+  3 skipped
+  19 passed (1.2m)
+ ELIFECYCLE  Command failed with exit code 1.

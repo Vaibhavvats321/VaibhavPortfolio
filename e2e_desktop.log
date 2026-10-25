@@ -1,0 +1,31 @@
+
+> vaibhav-portfolio@0.1.0 test:e2e C:\Projects\VaibhavPortfolio
+> playwright test "--" "--project=desktop-chromium"
+
+
+Running 30 tests using 6 workers
+
+  ok  4 [desktop-chromium] › e2e\home.spec.ts:59:5 › marks the current section in the desktop navigation (33.4s)
+  -   7 [desktop-chromium] › e2e\home.spec.ts:82:5 › opens and closes the mobile menu with Escape
+  x   3 [desktop-chromium] › e2e\home.spec.ts:3:5 › renders the portfolio landing page (37.1s)
+  x   6 [desktop-chromium] › e2e\home.spec.ts:73:5 › keeps footer link targets at least 24px tall (36.0s)
+  x   2 [desktop-chromium] › e2e\home.spec.ts:47:5 › reveals below-the-fold sections on scroll (41.1s)
+  x   5 [desktop-chromium] › e2e\home.spec.ts:17:5 › loads without browser errors (38.2s)
+  x   1 [desktop-chromium] › e2e\home.spec.ts:33:5 › skip link moves focus to the main landmark (40.2s)
+  ok 11 [desktop-chromium] › e2e\home.spec.ts:135:7 › without JavaScript › keeps the narrative content readable (5.6s)
+  ok  8 [desktop-chromium] › e2e\home.spec.ts:100:5 › does not overflow horizontally across widths (14.8s)
+  ok  9 [desktop-chromium] › e2e\home.spec.ts:117:7 › reduced motion › keeps all content visible (15.7s)
+  x  10 [tablet-chromium] › e2e\home.spec.ts:3:5 › renders the portfolio landing page (16.0s)
+  x  13 [tablet-chromium] › e2e\home.spec.ts:33:5 › skip link moves focus to the main landmark (14.5s)
+  x  12 [tablet-chromium] › e2e\home.spec.ts:17:5 › loads without browser errors (14.5s)
+  -  19 [tablet-chromium] › e2e\home.spec.ts:59:5 › marks the current section in the desktop navigation
+  ok 20 [tablet-chromium] › e2e\home.spec.ts:135:7 › without JavaScript › keeps the narrative content readable (7.0s)
+  ok 17 [tablet-chromium] › e2e\home.spec.ts:117:7 › reduced motion › keeps all content visible (17.1s)
+  x  14 [tablet-chromium] › e2e\home.spec.ts:47:5 › reveals below-the-fold sections on scroll (9.2s)
+  ok 16 [tablet-chromium] › e2e\home.spec.ts:100:5 › does not overflow horizontally across widths (24.9s)
+  ok 18 [tablet-chromium] › e2e\home.spec.ts:73:5 › keeps footer link targets at least 24px tall (24.6s)
+  ok 22 [mobile-chromium] › e2e\home.spec.ts:17:5 › loads without browser errors (8.9s)
+  -  25 [mobile-chromium] › e2e\home.spec.ts:59:5 › marks the current section in the desktop navigation
+  x  21 [mobile-chromium] › e2e\home.spec.ts:33:5 › skip link moves focus to the main landmark (12.9s)
+  x  15 [tablet-chromium] › e2e\home.spec.ts:82:5 › opens and closes the mobile menu with Escape (31.9s)
+  x  23 [mobile-chromium] › e2e\home.spec.ts:3:5 › renders the portfolio landing page (12.4s)

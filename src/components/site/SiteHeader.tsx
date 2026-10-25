@@ -1,29 +1,48 @@
-import Link from "next/link";
+"use client";
 
+import { useEffect, useState } from "react";
+import { SiteNav } from "@/components/site/SiteNav";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { siteConfig } from "@/config/site";
 
 export function SiteHeader() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="relative z-20 border-b border-line">
-      <div className="page-shell flex h-20 items-center justify-between gap-6">
-        <Link
-          href="/"
-          className="font-display text-2xl leading-none tracking-[-0.025em] text-paper transition-colors hover:text-accent focus-visible:text-accent"
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[rgb(var(--bg))]/90 backdrop-blur"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="page-shell flex h-16 items-center justify-between gap-6">
+        <a
+          href="#home"
+          aria-label={`${siteConfig.fullName}, back to top`}
+          className="text-lg font-semibold tracking-tight text-[rgb(var(--text))] transition-colors hover:text-[rgb(var(--primary))] focus-visible:text-[rgb(var(--primary))]"
         >
-          {siteConfig.name}
-          <span className="text-accent">.</span>
-        </Link>
-        <p className="eyebrow hidden md:block">
-          Portfolio / {siteConfig.year}
-        </p>
-        <p className="eyebrow flex items-center gap-2.5">
-          <span
-            aria-hidden="true"
-            className="size-1.5 rounded-full bg-accent motion-safe:animate-pulse"
-          />
-          Phase {siteConfig.phase.current} — {siteConfig.phase.label}
-        </p>
+          {siteConfig.fullName}
+        </a>
+        <div className="flex items-center gap-6">
+          <SiteNav />
+          <ThemeToggle />
+        </div>
       </div>
+      <div
+        className={`h-px w-full transition-opacity duration-300 ${
+          scrolled ? "bg-[rgb(var(--border))]/60 opacity-100" : "bg-[rgb(var(--border))]/60 opacity-0"
+        }`}
+      />
     </header>
   );
 }

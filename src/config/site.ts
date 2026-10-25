@@ -1,16 +1,13 @@
+import { portfolio } from "@/content/portfolio";
+
 export const siteConfig = {
-  name: "Vaibhav",
-  title: "Vaibhav — Developer Portfolio",
+  name: portfolio.identity.displayName,
+  fullName: portfolio.identity.fullName,
+  title: `${portfolio.identity.fullName} — ${portfolio.identity.positioning}`,
   description:
-    "A cinematic, editorial portfolio for Vaibhav. Phase 0 establishes the design system and engineering foundation.",
+    "Vaibhav Vats — Software Engineer · AI Engineer. A modern portfolio with interactive 3D skills globe, projects carousel, and day/night theme.",
   locale: "en",
   year: 2026,
-  phase: {
-    current: 0,
-    label: "Foundation",
-    total: 7,
-  },
-  // Intentionally unset until verified information is supplied.
-  email: null,
-  socialLinks: [],
+  email: portfolio.contact.email,
+  socialLinks: portfolio.contact.links,
 } as const;

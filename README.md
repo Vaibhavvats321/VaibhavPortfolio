@@ -2,7 +2,7 @@
 
 A cinematic, editorial personal developer portfolio. The project is being built in reviewed phases, with `PROJECT_SPEC.md` as the source of truth.
 
-**Status:** Phase 0 — Foundation. Content is intentionally placeholder-only until verified details are supplied.
+**Status:** Phase 3 — Cinematic Visual Audit & Advanced Motion Polish complete. Content is published only when verified; placeholders and unlinked actions are explicit and non-functional.
 
 ## Stack
 
@@ -51,10 +51,12 @@ Open http://localhost:3000.
 src/
   app/                  App Router entry points and global styles
   components/
-    foundation/         Temporary Phase 0 page content
     motion/             Client-only Motion wrappers
-    site/               Shared site chrome
-  config/               Typed site configuration and placeholders
+    sections/           Page sections (hero, introduction, projects, experience, contact)
+    site/               Shared site chrome (header/nav/footer/skip link)
+    ui/                 Reserved for small reusable primitives
+  config/               Typed site configuration
+  content/              Typed portfolio content and placeholders
   lib/                  Small shared utilities
 e2e/                    Playwright browser tests
 ```

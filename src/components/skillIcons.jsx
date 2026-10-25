@@ -1,0 +1,41 @@
+// Brand color + logo fallback for skills
+export const skillMeta = {
+  "React": { color: "#61DAFB", letter: "R" },
+  "Next.js": { color: "#6eb4ff", letter: "N" },
+  "Redux": { color: "#764ABC", letter: "Rx" },
+  "TypeScript": { color: "#3178C6", letter: "TS" },
+  "HTML5": { color: "#E34F26", letter: "H5" },
+  "CSS3": { color: "#1572B6", letter: "C3" },
+  "Tailwind": { color: "#06B6D4", letter: "TW" },
+  "MUI": { color: "#007FFF", letter: "MUI" },
+  "Modular CSS": { color: "#A78BFA", letter: "MC" },
+  "Node.js": { color: "#5FA04E", letter: "NO" },
+  "Express": { color: "#9CA3AF", letter: "EX" },
+  "Spring Boot": { color: "#6DB33F", letter: "SB" },
+  "REST APIs": { color: "#22D3EE", letter: "{}" },
+  "JavaScript": { color: "#F7DF1E", letter: "JS" },
+  "Java": { color: "#E76F00", letter: "JV" },
+  "C++": { color: "#00599C", letter: "C+" },
+  "C": { color: "#A8B9CC", letter: "C" },
+  "PostgreSQL": { color: "#4169E1", letter: "PG" },
+  "MongoDB": { color: "#47A248", letter: "MG" },
+  "MySQL": { color: "#4479A1", letter: "MY" },
+  "Git": { color: "#F05032", letter: "GT" },
+  "GitHub": { color: "#C9D1D9", letter: "GH" },
+  "Docker": { color: "#2496ED", letter: "DK" },
+  "AWS": { color: "#FF9900", letter: "AW" },
+  "Postman": { color: "#FF6C37", letter: "PM" },
+  "Linux": { color: "#FCC624", letter: "LX" },
+  "Maven": { color: "#C71A36", letter: "MV" },
+  "IntelliJ IDEA": { color: "#FE315D", letter: "IJ" },
+  "VS Code": { color: "#22A7F0", letter: "VS" },
+  "Claude Code": { color: "#D97757", letter: "CC" },
+  "Cline": { color: "#22D3EE", letter: "CL" },
+  "Prompt Engineering": { color: "#A78BFA", letter: "PE" },
+  "AI Automation": { color: "#34D399", letter: "AA" },
+  "System Design": { color: "#F59E0B", letter: "SD" },
+};
+
+export function metaFor(label) {
+  return skillMeta[label] || { color: "#8B93AB", letter: label.slice(0, 2) };
+}

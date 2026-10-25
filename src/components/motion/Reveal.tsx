@@ -12,14 +12,21 @@ type RevealProps = {
   distance?: number;
 };
 
-export function Reveal({ children, className, delay = 0, distance = 24 }: RevealProps) {
+export function Reveal({
+  children,
+  className,
+  delay = 0,
+  distance = 24,
+}: RevealProps) {
   const shouldReduceMotion = useReducedMotion() ?? false;
 
   return (
     <motion.div
+      data-reveal=""
       className={className}
       initial={shouldReduceMotion ? false : { opacity: 0, y: distance }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{
         duration: shouldReduceMotion ? 0 : 0.9,
         delay: shouldReduceMotion ? 0 : delay,

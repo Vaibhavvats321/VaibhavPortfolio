@@ -1,0 +1,4 @@
+
+> vaibhav-portfolio@0.1.0 lint C:\Projects\VaibhavPortfolio
+> eslint .
+

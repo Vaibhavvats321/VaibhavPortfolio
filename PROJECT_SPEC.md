@@ -7,9 +7,9 @@
 | Project | Vaibhav Portfolio |
 | Repository | `C:\Projects\VaibhavPortfolio` |
 | Owner | Vaibhav (identity details pending confirmation) |
-| Current phase | Phase 0 — Foundation (complete) |
-| Status | Complete — awaiting owner approval |
-| Last updated | 2026-10-23 |
+| Current phase | Phase 3 — Cinematic Visual Audit & Advanced Motion Polish (complete) |
+| Status | Implemented and verified — awaiting owner approval before Phase 4 |
+| Last updated | 2026-10-24 |
 | Package manager | pnpm 10.26.2 |
 | Node requirement | `>=22.12.0` (verified with 22.23.2) |
 
@@ -182,9 +182,11 @@ Rules:
 
 ## 6. Design direction
 
-### Concept: Editorial Nocturne
+### Concept: Intelligence, Systems, and Software in Motion
 
-An ink-black stage, warm paper typography, and a single electric chartreuse signal. The mood is late-night studio work: precise, quiet, confident, and human. The grid is strict; the typography is expressive; the accent is earned rather than sprayed across the page.
+An ink-black stage, warm paper typography, and a single electric chartreuse signal, now anchored by an original technical environment. The mood is late-night engineering work: precise, quiet, confident, and human. The visual language combines software architecture, interconnected systems, AI-inspired neural structures, data flow, and computational geometry into restrained procedural art.
+
+The hero uses an original Three.js neural-network scene: layered nodes, connected pathways, and subtle data packets moving through the system, with pointer and scroll depth. It is not a temple, fantasy landscape, generic cyberpunk city, stock AI brain, fake code block, or decorative terminal. The grid is strict; the typography is expressive; the accent is earned rather than sprayed across the page.
 
 This direction deliberately avoids the reference's temple subject, vermilion/gold palette, Japanese motifs, and scene composition.
 
@@ -254,8 +256,8 @@ Spacing uses Tailwind's base scale, with page gutters from `clamp(1.25rem, 4vw, 
 
 ### 3D
 
-- Three.js is not part of Phase 0.
-- A future 3D scene must add narrative value, use original or licensed assets, and have a designed fallback.
+- Three.js is now used for the approved original hero scene (`CinematicScene`): a procedural neural-network/systems visualization with WebGL, static fallback through the dynamic-import loading state, reduced-motion rendering, visibility pausing, and disposal on unmount.
+- A 3D scene must add narrative value, use original or licensed assets, and have a designed fallback.
 - Requirements for any 3D phase: dynamic import, WebGL capability check, static poster fallback, pause rendering offscreen, cap device pixel ratio, avoid blocking LCP, and no interaction that is unavailable to keyboard/reduced-motion users.
 
 ---
@@ -435,3 +437,8 @@ Targets are goals to measure in Phase 7, not claims made in Phase 0.
 ## 14. Change log
 
 - **2026-10-23 — Phase 0:** Created the project scaffold, tooling, token foundation, temporary accessible landing page, reference/licensing research, and project documentation.
+- **2026-10-23 — Phase 1:** Replaced the temporary foundation page with navigation, a cinematic hero with restrained motion, an introduction section, and placeholder sections for Work/Experience/Contact. Centralized typed content in `src/content/portfolio.ts`, refined header/nav/footer, added a reduced-motion-safe hero signal, and updated tests/e2e/README/PROJECT_SPEC. No Third-party assets, Three.js, or GSAP were added; placeholders remain explicit and non-functional.
+- **2026-10-23 — Phase 2:** Added typed projects, experience, and contact content to `src/content/portfolio.ts`; implemented `Projects`, `Experience`, and `Contact` sections with responsive editorial layouts, disabled/pending link states, and section reveals via existing `Reveal`/Motion. Wired sections into the home page, updated metadata/navigation/content to use Vaibhav Vats identity, and expanded tests/e2e/README/PROJECT_SPEC. No new dependencies added; placeholders remain explicit and non-functional.
+- **2026-10-24 — Phase 3:** Completed a browser-based visual audit and polished the Editorial Nocturne UI: larger cinematic hero composition, original SVG signal artwork, responsive section rhythm, project-card previews and hover/focus states, experience timeline nodes, contact cards, active navigation, reduced-motion and no-JS support, and accessible footer targets. Refined `Reveal` to use viewport-triggered Motion, added `HeroDepth` parallax, and expanded Playwright checks for reveals, navigation state, footer targets, mobile menu, reduced motion, and no-JS reading. No dependencies added.
+- **2026-10-24 — Visual direction correction:** Replaced the generic cinematic hero background with an original procedural Three.js neural-network/systems scene communicating software engineering and AI engineering. Updated `PROJECT_SPEC.md` to document the approved concept "Intelligence, Systems, and Software in Motion." No new dependencies added.
+- **2026-10-24 — Major visual redesign:** Reworked the hero into a focused computational core with orbital rings, satellite nodes, signal nodes, connecting pathways, and data packets; improved project preview diagrams, contrast, and responsive composition. Captured before/after screenshots at desktop, tablet, mobile, and narrow widths. `pnpm verify` passed (lint, typecheck, 2 unit tests, build, 27/30 Playwright with 3 skipped).
